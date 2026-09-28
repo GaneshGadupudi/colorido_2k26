@@ -1,0 +1,74 @@
+/* ============================================================
+   COLORIDO 2K26 — ANIMATIONS
+   ============================================================ */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes floatShape {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -20px) scale(1.05); }
+  50% { transform: translate(-20px, 30px) scale(0.95); }
+  75% { transform: translate(20px, 20px) scale(1.02); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+@keyframes scrollDown {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Staggered reveal for grids */
+.stagger > * { opacity: 0; transform: translateY(20px); }
+.stagger.visible > * { opacity: 1; transform: translateY(0); }
+.stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger.visible > *:nth-child(3) { transition-delay: 0.15s; }
+.stagger.visible > *:nth-child(4) { transition-delay: 0.2s; }
+.stagger.visible > *:nth-child(5) { transition-delay: 0.25s; }
+.stagger.visible > *:nth-child(6) { transition-delay: 0.3s; }
+.stagger.visible > *:nth-child(7) { transition-delay: 0.35s; }
+.stagger.visible > *:nth-child(8) { transition-delay: 0.4s; }
+.stagger.visible > *:nth-child(9) { transition-delay: 0.45s; }
+.stagger.visible > *:nth-child(10) { transition-delay: 0.5s; }
+.stagger.visible > *:nth-child(11) { transition-delay: 0.55s; }
+.stagger.visible > *:nth-child(12) { transition-delay: 0.6s; }
+.stagger.visible > * {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

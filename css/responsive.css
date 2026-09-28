@@ -1,0 +1,112 @@
+/* ============================================================
+   COLORIDO 2K26 — RESPONSIVE DESIGN
+   Breakpoints: Desktop / Tablet / Mobile
+   ============================================================ */
+
+/* ── LARGE DESKTOP (≤ 1440px) ────────────────────────────── */
+@media (max-width: 1440px) {
+  :root { --container-max: 1200px; }
+}
+
+/* ── DESKTOP (≤ 1366px) ──────────────────────────────────── */
+@media (max-width: 1366px) {
+  .hero-title { font-size: clamp(3rem, 10vw, 6.5rem); }
+}
+
+/* ── TABLET LANDSCAPE (≤ 1024px) ─────────────────────────── */
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; margin-bottom: var(--space-2); }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── TABLET PORTRAIT (≤ 768px) ────────────────────────────── */
+@media (max-width: 768px) {
+  :root { --space-8: 5rem; }
+
+  /* Nav → mobile menu */
+  .nav-links { display: none; }
+  .nav-cta .btn-outline { display: none; }
+  .nav-toggle { display: flex; }
+
+  /* About */
+  .about-grid { grid-template-columns: 1fr; text-align: center; }
+  .about-tags { justify-content: center; }
+  .about-visual { max-width: 350px; margin: 0 auto var(--space-3); }
+
+  /* Contact */
+  .contact-grid { grid-template-columns: 1fr; }
+
+  /* Gallery */
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+  .gallery-item.large { grid-column: span 2; grid-row: span 2; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+
+  /* Form row */
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Event modal info grid */
+  .event-modal-info-grid { grid-template-columns: 1fr; }
+
+  /* Schedule timeline */
+  .schedule-timeline::before { left: 20px; }
+  .schedule-item .schedule-dot { width: 42px; height: 42px; font-size: 0.65rem; }
+}
+
+/* ── MOBILE (≤ 480px) ────────────────────────────────────── */
+@media (max-width: 480px) {
+  :root { --space-8: 4rem; --space-7: 3rem; }
+
+  .container { padding: 0 var(--space-3); }
+  .section-header h2 { font-size: 1.75rem; }
+
+  /* Hero */
+  .hero-title { font-size: 3rem; }
+  .hero-year { font-size: 2.5rem; }
+  .hero-subtitle { font-size: 0.75rem; letter-spacing: 0.2em; }
+  .hero-buttons { flex-direction: column; width: 100%; }
+  .hero-buttons .btn { width: 100%; }
+
+  /* Countdown */
+  .countdown-grid { gap: 0.5rem; }
+  .countdown-item { min-width: 70px; padding: var(--space-2) var(--space-1); }
+  .countdown-number { font-size: 2rem; }
+
+  /* Events */
+  .events-grid { grid-template-columns: 1fr; }
+  .events-controls { flex-direction: column; align-items: center; }
+  .events-tab { width: 100%; max-width: 280px; text-align: center; }
+
+  /* Results */
+  .results-grid { grid-template-columns: 1fr; }
+
+  /* Gallery */
+  .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 200px; }
+  .gallery-item.large { grid-column: span 1; grid-row: span 1; }
+
+  /* Sponsors */
+  .sponsor-card { width: 140px; height: 90px; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; text-align: center; }
+  .footer-social { justify-content: center; }
+
+  /* Back to top */
+  .back-to-top { width: 40px; height: 40px; bottom: var(--space-3); right: var(--space-3); }
+
+  /* Ticker */
+  .ticker-label { font-size: 0.65rem; padding: 0 var(--space-2); }
+  .ticker-track { padding-left: 90px; }
+}
+
+/* ── SMALL MOBILE (≤ 375px) ──────────────────────────────── */
+@media (max-width: 375px) {
+  .hero-title { font-size: 2.5rem; }
+  .hero-year { font-size: 2rem; }
+  .countdown-item { min-width: 65px; }
+  .countdown-number { font-size: 1.75rem; }
+  .navbar-brand .brand-sub { display: none; }
+}
