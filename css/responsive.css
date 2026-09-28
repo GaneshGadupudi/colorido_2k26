@@ -13,11 +13,19 @@
   .hero-title { font-size: clamp(3rem, 10vw, 6.5rem); }
 }
 
+/* ── LAPTOP / NAV DENSITY (≤ 1180px) ─────────────────────── */
+@media (max-width: 1180px) {
+  .navbar-brand .brand-sub { display: none; }
+  .nav-links { gap: 0; }
+  .nav-links a { padding: 0.5rem 0.6rem; font-size: 0.8rem; }
+}
+
 /* ── TABLET LANDSCAPE (≤ 1024px) ─────────────────────────── */
 @media (max-width: 1024px) {
   .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; margin-bottom: var(--space-2); }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .highlights-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ── TABLET PORTRAIT (≤ 768px) ────────────────────────────── */
@@ -79,6 +87,9 @@
   .events-grid { grid-template-columns: 1fr; }
   .events-controls { flex-direction: column; align-items: center; }
   .events-tab { width: 100%; max-width: 280px; text-align: center; }
+
+  /* Home highlights */
+  .highlights-grid { grid-template-columns: 1fr; }
 
   /* Results */
   .results-grid { grid-template-columns: 1fr; }

@@ -149,31 +149,3 @@ export const galleryImages = [
   { url: 'https://images.pexels.com/photos/28587831/pexels-photo-28587831.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', alt: 'Fashion show with dazzling lights', size: 'medium' },
   { url: 'https://images.pexels.com/photos/35244385/pexels-photo-35244385.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', alt: 'Traditional dancers in vibrant costumes', size: 'medium' },
 ];
-
-// ── FAQ DATA ──────────────────────────────────────────────
-export const faqs = [
-  {
-    question: 'Who can participate in COLORIDO 2K26?',
-    answer: 'COLORIDO 2K26 is a national-level cultural and sports fest. Students from any recognized college across India are eligible to participate.',
-  },
-  {
-    question: 'Is there a registration fee?',
-    answer: 'Yes, each event has a nominal registration fee. The fee varies by event and is listed on each event detail page. The fee helps cover organizing costs and prizes.',
-  },
-  {
-    question: 'Can I participate in multiple events?',
-    answer: 'Absolutely! You can register for as many events as you like, provided the schedules do not conflict. We recommend checking the schedule page before registering.',
-  },
-  {
-    question: 'Is accommodation provided for outstation participants?',
-    answer: 'Yes, hostel accommodation is available for outstation participants on a first-come, first-served basis. Contact the helpdesk after registering to book your slot.',
-  },
-  {
-    question: 'How do I know if my registration is confirmed?',
-    answer: 'After submitting the registration form, you will receive a confirmation message on screen. In Phase 2, email confirmations will be sent automatically.',
-  },
-  {
-    question: 'Are spectators allowed?',
-    answer: 'Yes! All events are open to spectators. Come support your friends, enjoy the performances, and experience the energy of COLORIDO 2K26.',
-  },
-];

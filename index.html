@@ -2,67 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="COLORIDO 2K26 — National Level Cultural & Sports Fest at R.V.R. & J.C. College of Engineering, Guntur" />
     <title>COLORIDO 2K26 — National Level Cultural & Sports Fest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/animations.css" />
-    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="js/colorido-logo.js" defer></script>
     <meta property="og:image" content="https://bolt.new/static/og_default.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
 </head>
   <body>
 
-    <!-- ═══════════════════════════════════════════════════════
-         NAVIGATION
-         ═══════════════════════════════════════════════════════ -->
-    <nav class="navbar" id="navbar">
-      <div class="container">
-        <a href="#home" class="navbar-brand">
-          <div class="brand-mark">C</div>
-          <div class="brand-text">
-            COLORIDO <span class="gradient-text">2K26</span>
-            <div class="brand-sub">R.V.R. & J.C. College</div>
-          </div>
-        </a>
-        <div class="nav-links" id="navLinks">
-          <a href="#home" class="active">Home</a>
-          <a href="#about">About</a>
-          <a href="#events">Events</a>
-          <a href="#schedule">Schedule</a>
-          <a href="#announcements">Announcements</a>
-          <a href="#results">Results</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#sponsors">Sponsors</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <div class="nav-cta">
-          <a href="#registration" class="btn btn-primary">Register</a>
-          <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
-    </nav>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#events">Events</a>
-      <a href="#schedule">Schedule</a>
-      <a href="#announcements">Announcements</a>
-      <a href="#results">Results</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#sponsors">Sponsors</a>
-      <a href="#contact">Contact</a>
-      <a href="#registration" class="btn btn-primary">Register Now</a>
-    </div>
+    <div id="site-header"></div>
+
+    <main id="main-content">
 
     <!-- ═══════════════════════════════════════════════════════
          HERO
@@ -80,8 +43,8 @@
         <div class="hero-year">2K26</div>
         <p class="hero-subtitle">National Level Cultural & Sports Fest</p>
         <div class="hero-buttons">
-          <a href="#events" class="btn btn-primary">Explore Events</a>
-          <a href="#registration" class="btn btn-outline">Register Now</a>
+          <a href="events.html" class="btn btn-primary">Explore Events</a>
+          <a href="register.html" class="btn btn-outline">Register Now</a>
         </div>
       </div>
       <div class="scroll-indicator">
@@ -137,11 +100,8 @@
     <section class="about-section" id="about">
       <div class="container">
         <div class="about-grid">
-          <div class="about-visual reveal">
-            <div class="ring ring-1"></div>
-            <div class="ring ring-2"></div>
-            <div class="ring ring-3"></div>
-            <div class="colorido-graphic">COLOR<br/>IDO</div>
+          <div class="about-visual reveal" id="aboutVisual">
+            <colorido-logo></colorido-logo>
           </div>
           <div class="about-text reveal">
             <span class="eyebrow" style="color: var(--color-crimson); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;">About Colorido</span>
@@ -159,333 +119,59 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════
-         EVENTS
+         HIGHLIGHTS — where to go next
          ═══════════════════════════════════════════════════════ -->
-    <section class="events-section" id="events">
+    <section class="highlights-section" id="highlights">
       <div class="container">
         <div class="section-header reveal">
-          <span class="eyebrow">Explore</span>
-          <h2>Event <span class="gradient-text">Explorer</span></h2>
-          <p>Discover all the cultural and sports events at COLORIDO 2K26. Filter by category or search for your favorite event.</p>
+          <span class="eyebrow">Find Your Way In</span>
+          <h2>Everything <span class="gradient-text">COLORIDO</span></h2>
+          <p>Events, schedule, gallery and registration each have their own page — here's where to go.</p>
         </div>
-        <div class="events-controls reveal">
-          <button class="events-tab active" data-category="all">All Events</button>
-          <button class="events-tab" data-category="Cultural">Cultural</button>
-          <button class="events-tab" data-category="Sports">Sports</button>
-        </div>
-        <div class="events-search reveal">
-          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input type="text" id="eventSearch" placeholder="Search events..." aria-label="Search events" />
-        </div>
-        <div class="events-grid stagger" id="eventsGrid"></div>
-        <p id="noEvents" style="display:none; text-align:center; color: var(--color-text-muted); padding: var(--space-5) 0;">No events found. Try a different search.</p>
-      </div>
-    </section>
-
-    <!-- Event Details Modal -->
-    <div class="event-modal-overlay" id="eventModalOverlay">
-      <div class="event-modal" id="eventModal"></div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════
-         SCHEDULE
-         ═══════════════════════════════════════════════════════ -->
-    <section class="schedule-section" id="schedule">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">3 Days of Action</span>
-          <h2>Event <span class="gradient-text">Schedule</span></h2>
-          <p>Plan your COLORIDO experience across three action-packed days.</p>
-        </div>
-        <div class="schedule-tabs reveal" id="scheduleTabs"></div>
-        <div class="schedule-day-label" id="scheduleDayLabel"></div>
-        <div class="schedule-timeline" id="scheduleTimeline"></div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         REGISTRATION
-         ═══════════════════════════════════════════════════════ -->
-    <section class="registration-section" id="registration">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Join the Fest</span>
-          <h2><span class="gradient-text">Registration</span></h2>
-          <p>Register for your favorite events at COLORIDO 2K26. Fill in your details below.</p>
-        </div>
-        <form class="registration-form reveal" id="registrationForm" novalidate>
-          <div class="form-group">
-            <label for="fullName">Full Name <span class="required">*</span></label>
-            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
-            <div class="error-message">Please enter your full name.</div>
-          </div>
-          <div class="form-group">
-            <label for="collegeName">College Name <span class="required">*</span></label>
-            <input type="text" id="collegeName" name="collegeName" placeholder="Enter your college name" required />
-            <div class="error-message">Please enter your college name.</div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email <span class="required">*</span></label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required />
-              <div class="error-message">Please enter a valid email address.</div>
+        <div class="highlights-grid stagger">
+          <a class="highlight-card" href="events.html">
+            <div class="highlight-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
-            <div class="form-group">
-              <label for="phone">Phone Number <span class="required">*</span></label>
-              <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required />
-              <div class="error-message">Please enter a valid 10-digit phone number.</div>
+            <h3>Event Explorer</h3>
+            <p>16 cultural &amp; sports events across 3 days. Filter by category or search for your favorite.</p>
+            <span class="highlight-link">Browse Events →</span>
+          </a>
+          <a class="highlight-card" href="schedule.html">
+            <div class="highlight-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="gender">Gender</label>
-              <select id="gender" name="gender">
-                <option value="">Select gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
+            <h3>Full Schedule</h3>
+            <p>A day-by-day timeline so you never miss a performance, match, or ceremony.</p>
+            <span class="highlight-link">View Schedule →</span>
+          </a>
+          <a class="highlight-card" href="gallery.html">
+            <div class="highlight-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
             </div>
-            <div class="form-group">
-              <label for="eventSelect">Select Event <span class="required">*</span></label>
-              <select id="eventSelect" name="eventSelect" required>
-                <option value="">Choose an event</option>
-              </select>
-              <div class="error-message">Please select an event.</div>
+            <h3>Festival Gallery</h3>
+            <p>Moments from rehearsals, past editions, and behind-the-scenes energy.</p>
+            <span class="highlight-link">View Gallery →</span>
+          </a>
+          <a class="highlight-card" href="register.html">
+            <div class="highlight-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="participantType">Participant Type</label>
-              <select id="participantType" name="participantType">
-                <option value="">Select type</option>
-                <option value="individual">Individual</option>
-                <option value="team">Team</option>
-              </select>
-            </div>
-            <div class="form-group form-conditional" id="teamNameGroup">
-              <label for="teamName">Team Name</label>
-              <input type="text" id="teamName" name="teamName" placeholder="Enter team name" />
-            </div>
-          </div>
-          <div class="form-group form-conditional" id="participantCountGroup">
-            <label for="participantCount">Number of Participants</label>
-            <input type="number" id="participantCount" name="participantCount" min="1" max="20" placeholder="Number of team members" />
-          </div>
-          <button type="submit" class="btn btn-primary form-submit">Submit Registration</button>
-        </form>
-        <div class="form-success" id="formSuccess">
-          <div class="success-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          </div>
-          <h3>Registration Submitted Successfully!</h3>
-          <p>Your registration for COLORIDO 2K26 has been received. We will contact you with further details.</p>
-          <button class="btn btn-outline" id="registerAnother">Register for Another Event</button>
+            <h3>Register Now</h3>
+            <p>Pick your event, fill in your details, and you're in. Takes two minutes.</p>
+            <span class="highlight-link">Register →</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════
-         ANNOUNCEMENTS
-         ═══════════════════════════════════════════════════════ -->
-    <section class="announcements-section" id="announcements">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Stay Updated</span>
-          <h2>Latest <span class="gradient-text">Announcements</span></h2>
-          <p>Important updates and notifications about COLORIDO 2K26.</p>
-        </div>
-        <div class="announcements-list stagger" id="announcementsList"></div>
-      </div>
-    </section>
+    </main>
 
-    <!-- ═══════════════════════════════════════════════════════
-         RESULTS
-         ═══════════════════════════════════════════════════════ -->
-    <section class="results-section" id="results">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Champions</span>
-          <h2>Event <span class="gradient-text">Results</span></h2>
-          <p>Celebrating the winners and runners-up of COLORIDO 2K26.</p>
-        </div>
-        <div class="results-tabs reveal">
-          <button class="events-tab active" data-results="cultural">Cultural</button>
-          <button class="events-tab" data-results="sports">Sports</button>
-        </div>
-        <div class="results-grid stagger" id="resultsGrid"></div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         GALLERY
-         ═══════════════════════════════════════════════════════ -->
-    <section class="gallery-section" id="gallery">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Moments</span>
-          <h2>Festival <span class="gradient-text">Gallery</span></h2>
-          <p>Relive the energy, color, and excitement of COLORIDO 2K26.</p>
-        </div>
-        <div class="gallery-grid stagger" id="galleryGrid"></div>
-      </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-      <button class="lightbox-close" id="lightboxClose" aria-label="Close">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <img src="" alt="" id="lightboxImg" />
-      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-      <div class="lightbox-caption" id="lightboxCaption"></div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════
-         SPONSORS
-         ═══════════════════════════════════════════════════════ -->
-    <section class="sponsors-section" id="sponsors">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Powered By</span>
-          <h2>Our <span class="gradient-text">Sponsors</span></h2>
-          <p>Thank you to our incredible sponsors who make COLORIDO 2K26 possible.</p>
-        </div>
-        <div id="sponsorsContainer"></div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         FAQ
-         ═══════════════════════════════════════════════════════ -->
-    <section class="faq-section" id="faq">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Questions</span>
-          <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
-        </div>
-        <div class="faq-list" id="faqList"></div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         CONTACT
-         ═══════════════════════════════════════════════════════ -->
-    <section class="contact-section" id="contact">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Get in Touch</span>
-          <h2>Contact <span class="gradient-text">COLORIDO 2K26</span></h2>
-          <p>Have questions? We are here to help.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-info-card reveal">
-            <h3>R.V.R. & J.C. College of Engineering</h3>
-            <div class="contact-info-item">
-              <div class="contact-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
-              <div class="contact-text"><strong>Address</strong>Guntur, Andhra Pradesh — 522019</div>
-            </div>
-            <div class="contact-info-item">
-              <div class="contact-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
-              <div class="contact-text"><strong>Email</strong>colorido2k26@rvrjcce.edu.in</div>
-            </div>
-            <div class="contact-info-item">
-              <div class="contact-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              </div>
-              <div class="contact-text"><strong>Phone</strong>+91 98765 43210</div>
-            </div>
-            <div class="contact-social">
-              <a href="#" aria-label="Instagram">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-              </a>
-              <a href="#" aria-label="Facebook">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-              </a>
-              <a href="#" aria-label="YouTube">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
-              </a>
-            </div>
-          </div>
-          <div class="contact-map reveal">
-            <div class="map-placeholder">
-              <div class="map-pin">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>R.V.R. & J.C. College of Engineering</span>
-              </div>
-            </div>
-            <h3>Find Us Here</h3>
-            <p>Chowdavaram, Guntur — 522019<br/>Andhra Pradesh, India</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         FOOTER
-         ═══════════════════════════════════════════════════════ -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <h3>COLORIDO <span class="gradient-text">2K26</span></h3>
-            <p class="footer-college">R.V.R. & J.C. College of Engineering</p>
-            <p class="footer-location">Guntur, Andhra Pradesh</p>
-            <div class="footer-social">
-              <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-              <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-              <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#events">Events</a></li>
-              <li><a href="#schedule">Schedule</a></li>
-              <li><a href="#gallery">Gallery</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Events</h4>
-            <ul>
-              <li><a href="#events">Cultural</a></li>
-              <li><a href="#events">Sports</a></li>
-              <li><a href="#registration">Registration</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Follow Us</h4>
-            <ul>
-              <li><a href="#">Instagram</a></li>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">YouTube</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2026 COLORIDO 2K26 — R.V.R. & J.C. College of Engineering, Guntur</p>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-    </button>
+    <div id="site-footer"></div>
 
     <!-- ═══════════════════════════════════════════════════════
          SCRIPTS
          ═══════════════════════════════════════════════════════ -->
-    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="js/pages/home.js"></script>
   </body>
 </html>

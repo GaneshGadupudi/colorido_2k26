@@ -18,6 +18,12 @@ export function initRegistration() {
     eventSelect.appendChild(opt);
   });
 
+  // Pre-select an event handed off from the Events page (?event=<id>)
+  const preselectedId = new URLSearchParams(window.location.search).get('event');
+  if (preselectedId && events.some((e) => e.id === preselectedId)) {
+    eventSelect.value = preselectedId;
+  }
+
   // Conditional fields
   const participantType = document.getElementById('participantType');
   const teamNameGroup = document.getElementById('teamNameGroup');
@@ -34,12 +40,29 @@ export function initRegistration() {
   });
 
   // Form submit
+  const submitBtn = form.querySelector('.form-submit');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      form.style.display = 'none';
-      document.getElementById('formSuccess').classList.add('show');
+    if (!validateForm()) {
+      const firstError = form.querySelector('.form-group.has-error input, .form-group.has-error select');
+      if (firstError) firstError.focus();
+      return;
     }
+
+    submitBtn.disabled = true;
+    submitBtn.classList.add('loading');
+
+    // Brief, deliberate delay so the loading state is perceivable feedback
+    // rather than an instantaneous, unconfirmed click.
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('loading');
+      form.style.display = 'none';
+      const success = document.getElementById('formSuccess');
+      success.classList.add('show');
+      success.querySelector('h3').setAttribute('tabindex', '-1');
+      success.querySelector('h3').focus();
+    }, 600);
   });
 
   // Register another
@@ -50,6 +73,7 @@ export function initRegistration() {
     teamNameGroup.classList.remove('show');
     participantCountGroup.classList.remove('show');
     clearErrors();
+    document.getElementById('fullName').focus();
   });
 
   // Real-time validation
@@ -108,13 +132,19 @@ function validateField(field, config) {
 
   if (valid) {
     group.classList.remove('has-error');
+    field.setAttribute('aria-invalid', 'false');
   } else {
     group.classList.add('has-error');
+    field.setAttribute('aria-invalid', 'true');
   }
 
   return valid;
 }
 
 function clearErrors() {
-  document.querySelectorAll('.form-group.has-error').forEach((g) => g.classList.remove('has-error'));
+  document.querySelectorAll('.form-group.has-error').forEach((g) => {
+    g.classList.remove('has-error');
+    const field = g.querySelector('input, select, textarea');
+    if (field) field.setAttribute('aria-invalid', 'false');
+  });
 }

@@ -5,8 +5,10 @@
 
 import { galleryImages } from '../data/announcements.js';
 import { icons } from './icons.js';
+import { createFocusTrap } from './focus-trap.js';
 
 let currentImageIndex = 0;
+let lightboxFocusTrap = null;
 
 export function initGallery() {
   const grid = document.getElementById('galleryGrid');
@@ -15,7 +17,7 @@ export function initGallery() {
   grid.innerHTML = galleryImages
     .map(
       (img, i) => `
-      <div class="gallery-item ${img.size}" data-index="${i}">
+      <div class="gallery-item ${img.size}" data-index="${i}" role="button" tabindex="0" aria-label="View image: ${img.alt}">
         <img src="${img.url}" alt="${img.alt}" loading="lazy" />
         <div class="gallery-zoom-icon">${icons.zoom}</div>
       </div>
@@ -27,6 +29,15 @@ export function initGallery() {
     item.addEventListener('click', () => {
       currentImageIndex = parseInt(item.dataset.index, 10);
       openLightbox();
+      activateLightboxFocusTrap();
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        currentImageIndex = parseInt(item.dataset.index, 10);
+        openLightbox();
+        activateLightboxFocusTrap();
+      }
     });
   });
 
@@ -64,8 +75,20 @@ function openLightbox() {
 }
 
 function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
+  const lightbox = document.getElementById('lightbox');
+  if (!lightbox.classList.contains('open')) return;
+  lightbox.classList.remove('open');
   document.body.style.overflow = '';
+  if (lightboxFocusTrap) {
+    lightboxFocusTrap.deactivate();
+    lightboxFocusTrap = null;
+  }
+}
+
+function activateLightboxFocusTrap() {
+  if (lightboxFocusTrap) return;
+  lightboxFocusTrap = createFocusTrap(document.getElementById('lightbox'));
+  lightboxFocusTrap.activate();
 }
 
 function navigateLightbox(direction) {

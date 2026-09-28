@@ -5,9 +5,11 @@
 
 import { events } from '../data/events.js';
 import { icons } from './icons.js';
+import { createFocusTrap } from './focus-trap.js';
 
 let currentCategory = 'all';
 let currentSearch = '';
+let modalFocusTrap = null;
 
 // ── RENDER EVENT CARDS ────────────────────────────────────
 export function renderEvents() {
@@ -115,24 +117,27 @@ export function openEventModal(eventId) {
           .join('')}
       </div>
     </div>
-    <a href="#registration" class="btn btn-primary form-submit" id="modalRegisterBtn">Register Now</a>
+    <a href="register.html?event=${encodeURIComponent(event.id)}" class="btn btn-primary form-submit" id="modalRegisterBtn">Register Now</a>
   `;
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 
   modal.querySelector('#eventModalClose').addEventListener('click', closeEventModal);
-  modal.querySelector('#modalRegisterBtn').addEventListener('click', () => {
-    closeEventModal();
-    const select = document.getElementById('eventSelect');
-    if (select) select.value = event.id;
-  });
+
+  modalFocusTrap = createFocusTrap(modal);
+  modalFocusTrap.activate();
 }
 
 export function closeEventModal() {
   const overlay = document.getElementById('eventModalOverlay');
+  if (!overlay.classList.contains('open')) return;
   overlay.classList.remove('open');
   document.body.style.overflow = '';
+  if (modalFocusTrap) {
+    modalFocusTrap.deactivate();
+    modalFocusTrap = null;
+  }
 }
 
 // ── INIT EVENT FILTERS ────────────────────────────────────
