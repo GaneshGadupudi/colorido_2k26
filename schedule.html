@@ -29,18 +29,40 @@
         <div class="section-header">
           <span class="eyebrow">3 Days of Action</span>
           <h2>Event <span class="gradient-text">Schedule</span></h2>
-          <p>Plan your COLORIDO experience across three action-packed days.</p>
+          <p>Three days, 15–17 October 2026. Pick a day, filter by category, and tap any event for its rules and registration.</p>
         </div>
       </div>
     </div>
 
     <section class="schedule-section" id="schedule">
       <div class="container">
-        <div class="schedule-tabs reveal" id="scheduleTabs"></div>
-        <div class="schedule-day-label" id="scheduleDayLabel"></div>
-        <div class="schedule-timeline" id="scheduleTimeline"></div>
+        <div class="schedule-now" id="scheduleNow" role="status" hidden></div>
+
+        <div class="schedule-toolbar">
+          <div class="schedule-tabs" id="scheduleTabs" role="tablist" aria-label="Fest days"></div>
+          <div class="schedule-toolbar-row">
+            <div class="schedule-filters" id="scheduleFilters" role="group" aria-label="Filter by category"></div>
+            <button class="schedule-calendar-btn" id="calendarBtn" type="button">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+              Add <span id="calendarDayLabel">Day 1</span> to calendar
+            </button>
+          </div>
+        </div>
+
+        <div class="schedule-panel" id="schedulePanel" role="tabpanel" tabindex="0">
+          <div class="schedule-summary" id="scheduleSummary"></div>
+          <div class="schedule-timeline" id="scheduleTimeline"></div>
+          <p class="schedule-empty" id="scheduleEmpty" hidden>Nothing in this category today. Try another day or switch to All.</p>
+        </div>
+
+        <p class="schedule-note">Timings are in IST and may shift slightly on the day. Check <a href="announcements.html">Announcements</a> for last-minute changes.</p>
       </div>
     </section>
+
+    <!-- Event Details Modal (shared with the Events page) -->
+    <div class="event-modal-overlay" id="eventModalOverlay">
+      <div class="event-modal" id="eventModal" role="dialog" aria-modal="true" tabindex="-1"></div>
+    </div>
 
     </main>
 

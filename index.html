@@ -38,31 +38,36 @@
         <div class="shape shape-4"></div>
       </div>
       <div class="hero-content">
+        <div class="hero-meta">
+          <span class="hero-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            15 – 17 Oct 2026
+          </span>
+          <span class="hero-meta-sep" aria-hidden="true"></span>
+          <span class="hero-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Guntur, Andhra Pradesh
+          </span>
+        </div>
         <p class="hero-college">R.V.R. & J.C. College of Engineering</p>
-        <h1 class="hero-title">COLORIDO</h1>
-        <div class="hero-year">2K26</div>
+        <h1 class="hero-title">COLORIDO <span class="hero-year">2K26</span></h1>
         <p class="hero-subtitle">National Level Cultural & Sports Fest</p>
         <div class="hero-buttons">
-          <a href="events.html" class="btn btn-primary">Explore Events</a>
-          <a href="register.html" class="btn btn-outline">Register Now</a>
+          <a href="register.html" class="btn btn-primary">Register Now</a>
+          <a href="events.html" class="btn btn-outline">Explore Events</a>
         </div>
+        <p class="hero-deadline" id="heroDeadline"></p>
       </div>
-      <div class="scroll-indicator">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
-    </section>
 
-    <!-- ═══════════════════════════════════════════════════════
-         TICKER
-         ═══════════════════════════════════════════════════════ -->
-    <div class="ticker">
-      <div class="ticker-label">
-        <span class="pulse-dot"></span>
-        Latest
-      </div>
-      <div class="ticker-track" id="tickerTrack"></div>
-    </div>
+      <!-- Ticker sits on the hero's bottom edge so it's visible on first load -->
+      <a class="ticker" href="announcements.html" aria-label="Latest announcements">
+        <div class="ticker-label">
+          <span class="pulse-dot"></span>
+          Latest
+        </div>
+        <div class="ticker-track" id="tickerTrack" aria-hidden="true"></div>
+      </a>
+    </section>
 
     <!-- ═══════════════════════════════════════════════════════
          COUNTDOWN
@@ -72,8 +77,9 @@
         <div class="section-header reveal">
           <span class="eyebrow">Mark Your Calendar</span>
           <h2>The Countdown Begins</h2>
+          <p>Day 1 kicks off on 15 October 2026 with check-in at 08:30 AM and the opening ceremony at 09:00 AM.</p>
         </div>
-        <div class="countdown-grid" id="countdownGrid">
+        <div class="countdown-grid" id="countdownGrid" role="timer" aria-label="Time until COLORIDO 2K26 begins">
           <div class="countdown-item">
             <div class="countdown-number" id="cdDays">00</div>
             <div class="countdown-label">Days</div>
@@ -104,63 +110,122 @@
             <colorido-logo></colorido-logo>
           </div>
           <div class="about-text reveal">
-            <span class="eyebrow" style="color: var(--color-crimson); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;">About Colorido</span>
+            <span class="eyebrow">About Colorido</span>
             <h2>Where <span class="gradient-text">Talent</span> Meets Celebration</h2>
             <p>COLORIDO 2K26 is the flagship national-level cultural and sports festival hosted by R.V.R. & J.C. College of Engineering, Guntur. It brings together students from across the country to celebrate creativity, athleticism, and youthful energy.</p>
             <p>From electrifying dance performances to nail-biting sports finals, from artistic showcases to literary brilliance — COLORIDO is a platform where talent takes center stage and memories are made that last a lifetime.</p>
-            <div class="about-tags">
-              <div class="about-tag"><span class="dot"></span> National Level</div>
-              <div class="about-tag"><span class="dot"></span> Cultural</div>
-              <div class="about-tag"><span class="dot"></span> Sports</div>
-            </div>
+            <div class="stats-grid" id="statsGrid"></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════
-         HIGHLIGHTS — where to go next
+         FEATURED EVENTS
          ═══════════════════════════════════════════════════════ -->
-    <section class="highlights-section" id="highlights">
+    <section class="featured-section" id="featured-events">
       <div class="container">
         <div class="section-header reveal">
-          <span class="eyebrow">Find Your Way In</span>
-          <h2>Everything <span class="gradient-text">COLORIDO</span></h2>
-          <p>Events, schedule, gallery and registration each have their own page — here's where to go.</p>
+          <span class="eyebrow">Headline Events</span>
+          <h2>Take the <span class="gradient-text">Stage</span></h2>
+          <p>A taste of what's waiting across three days. Tap any event for rules, timings, and fees.</p>
         </div>
-        <div class="highlights-grid stagger">
-          <a class="highlight-card" href="events.html">
-            <div class="highlight-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <h3>Event Explorer</h3>
-            <p>16 cultural &amp; sports events across 3 days. Filter by category or search for your favorite.</p>
-            <span class="highlight-link">Browse Events →</span>
-          </a>
-          <a class="highlight-card" href="schedule.html">
-            <div class="highlight-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            </div>
-            <h3>Full Schedule</h3>
-            <p>A day-by-day timeline so you never miss a performance, match, or ceremony.</p>
-            <span class="highlight-link">View Schedule →</span>
-          </a>
-          <a class="highlight-card" href="gallery.html">
-            <div class="highlight-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-            </div>
-            <h3>Festival Gallery</h3>
-            <p>Moments from rehearsals, past editions, and behind-the-scenes energy.</p>
-            <span class="highlight-link">View Gallery →</span>
-          </a>
-          <a class="highlight-card" href="register.html">
-            <div class="highlight-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-            </div>
-            <h3>Register Now</h3>
-            <p>Pick your event, fill in your details, and you're in. Takes two minutes.</p>
-            <span class="highlight-link">Register →</span>
-          </a>
+        <div class="events-controls reveal" role="group" aria-label="Filter featured events">
+          <button class="events-tab active" data-featured="all" aria-pressed="true">All</button>
+          <button class="events-tab" data-featured="Cultural" aria-pressed="false">Cultural</button>
+          <button class="events-tab" data-featured="Sports" aria-pressed="false">Sports</button>
+        </div>
+        <div class="events-grid stagger" id="featuredGrid" aria-live="polite"></div>
+        <div class="section-cta reveal">
+          <a href="events.html" class="btn btn-outline" id="allEventsLink">View All Events</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event Details Modal (shared with the Events page) -->
+    <div class="event-modal-overlay" id="eventModalOverlay">
+      <div class="event-modal" id="eventModal" role="dialog" aria-modal="true" tabindex="-1"></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         THREE DAYS AT A GLANCE
+         ═══════════════════════════════════════════════════════ -->
+    <section class="days-section" id="schedule-glance">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Plan Your Fest</span>
+          <h2>Three Days at a <span class="gradient-text">Glance</span></h2>
+          <p>The big moments of each day. The full timeline lives on the Schedule page.</p>
+        </div>
+        <div class="days-grid stagger" id="daysGrid"></div>
+        <div class="section-cta reveal">
+          <a href="schedule.html" class="btn btn-outline">Full Schedule</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         GALLERY PREVIEW
+         ═══════════════════════════════════════════════════════ -->
+    <section class="home-gallery-section" id="gallery-preview">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">The Vibe</span>
+          <h2>Moments from <span class="gradient-text">COLORIDO</span></h2>
+        </div>
+        <div class="home-gallery stagger" id="homeGallery"></div>
+        <div class="section-cta reveal">
+          <a href="gallery.html" class="btn btn-outline">Open Gallery</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         LATEST ANNOUNCEMENTS
+         ═══════════════════════════════════════════════════════ -->
+    <section class="home-news-section" id="latest">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Stay Updated</span>
+          <h2>Latest <span class="gradient-text">Announcements</span></h2>
+        </div>
+        <div class="announcements-list stagger" id="homeAnnouncements"></div>
+        <div class="section-cta reveal">
+          <a href="announcements.html" class="btn btn-outline">All Announcements</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SPONSORS STRIP
+         ═══════════════════════════════════════════════════════ -->
+    <section class="sponsor-strip-section" aria-labelledby="sponsorStripTitle">
+      <div class="container">
+        <h2 class="sponsor-strip-title" id="sponsorStripTitle">Powered by our partners</h2>
+      </div>
+      <div class="sponsor-marquee">
+        <div class="sponsor-marquee-track" id="sponsorTrack"></div>
+      </div>
+      <div class="container">
+        <div class="section-cta">
+          <a href="sponsors.html" class="btn btn-ghost">Meet our sponsors →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         FINAL CTA
+         ═══════════════════════════════════════════════════════ -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <div class="cta-text">
+            <h2>Ready to steal the spotlight?</h2>
+            <p id="ctaDeadline">Pick your event, fill in your details, and you're in. It takes about two minutes.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="register.html" class="btn btn-light">Register Now</a>
+          </div>
         </div>
       </div>
     </section>

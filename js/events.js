@@ -163,15 +163,19 @@ export function initEvents() {
     });
   }
 
-  // Close modal on overlay click
-  const overlay = document.getElementById('eventModalOverlay');
-  if (overlay) {
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) closeEventModal();
-    });
-  }
+  bindEventModal();
+}
 
-  // ESC to close
+// ── MODAL DISMISSAL ───────────────────────────────────────
+// Overlay click + Esc close the modal. Any page that includes the
+// #eventModalOverlay markup calls this once.
+export function bindEventModal() {
+  const overlay = document.getElementById('eventModalOverlay');
+  if (!overlay) return;
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeEventModal();
+  });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeEventModal();
   });
