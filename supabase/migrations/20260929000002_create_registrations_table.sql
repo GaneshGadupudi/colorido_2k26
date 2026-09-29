@@ -15,6 +15,12 @@
 --   * A unique (email, event_id) constraint stops the same
 --     person from double-submitting the same event; the app
 --     surfaces this as a friendly "already registered" message.
+--   * event_id is a plain text id (matching data/events.js), not
+--     a foreign key — event details stay static in the front end,
+--     this table only exists to collect registrations.
+--   * team_members is a JSON array of the other team members' names
+--     (the registrant's own name is already in full_name); only
+--     set when participant_type = 'team'.
 -- ============================================================
 
 create table if not exists registrations (
@@ -24,10 +30,11 @@ create table if not exists registrations (
   email               text not null check (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
   phone               text not null check (phone ~ '^[0-9]{10}$'),
   gender              text check (gender is null or gender in ('male', 'female', 'other')),
-  event_id            text not null references events (id) on delete restrict,
+  event_id            text not null,
   participant_type    text check (participant_type is null or participant_type in ('individual', 'team')),
   team_name           text,
   participant_count   integer check (participant_count is null or participant_count between 1 and 20),
+  team_members        jsonb check (team_members is null or jsonb_typeof(team_members) = 'array'),
   created_at          timestamptz not null default now(),
 
   unique (email, event_id)

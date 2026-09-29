@@ -2,31 +2,12 @@
 // COLORIDO 2K26 — ANNOUNCEMENTS MODULE
 // ============================================================
 
-import { fetchAnnouncements } from './services/announcementsService.js';
-import { showLoading, showError, showEmpty, hideState } from './data-state.js';
+import { announcements } from '../data/announcements.js';
 
-export async function initAnnouncements() {
+export function initAnnouncements() {
   const list = document.getElementById('announcementsList');
-  const state = document.getElementById('announcementsState');
   if (!list) return;
 
-  list.innerHTML = '';
-  showLoading(state, 'Loading announcements…');
-
-  let announcements;
-  try {
-    announcements = await fetchAnnouncements();
-  } catch (err) {
-    showError(state, err.message, () => initAnnouncements());
-    return;
-  }
-
-  if (announcements.length === 0) {
-    showEmpty(state, 'No announcements yet. Check back soon.');
-    return;
-  }
-
-  hideState(state);
   list.innerHTML = announcements
     .map(
       (a) => `

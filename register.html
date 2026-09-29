@@ -1,4 +1,3 @@
-register.html
 <!doctype html>
 <html lang="en">
   <head>
@@ -38,38 +37,58 @@ register.html
     <section class="registration-section" id="registration">
       <div class="container">
         <form class="registration-form reveal" id="registrationForm" novalidate>
-          <div class="form-group">
-            <label for="fullName">Full Name <span class="required">*</span></label>
-            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required aria-describedby="fullNameError" aria-invalid="false" />
-            <div class="error-message" id="fullNameError" role="alert">Please enter your full name.</div>
-          </div>
-          <div class="form-group">
-            <label for="collegeName">College Name <span class="required">*</span></label>
-            <input type="text" id="collegeName" name="collegeName" placeholder="Enter your college name" required aria-describedby="collegeNameError" aria-invalid="false" />
-            <div class="error-message" id="collegeNameError" role="alert">Please enter your college name.</div>
-          </div>
-          <div class="form-row">
+          <fieldset class="form-section">
+            <legend class="form-section-title"><span class="form-section-number">1</span>Your Details</legend>
+
             <div class="form-group">
-              <label for="email">Email <span class="required">*</span></label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required aria-describedby="emailError" aria-invalid="false" />
-              <div class="error-message" id="emailError" role="alert">Please enter a valid email address.</div>
+              <label for="fullName">Full Name <span class="required">*</span></label>
+              <div class="input-icon-group">
+                <span class="input-icon" aria-hidden="true" data-icon="user"></span>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required aria-describedby="fullNameError" aria-invalid="false" />
+              </div>
+              <div class="error-message" id="fullNameError" role="alert">Please enter your full name.</div>
             </div>
             <div class="form-group">
-              <label for="phone">Phone Number <span class="required">*</span></label>
-              <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required aria-describedby="phoneError" aria-invalid="false" />
-              <div class="error-message" id="phoneError" role="alert">Please enter a valid 10-digit phone number.</div>
+              <label for="collegeName">College Name <span class="required">*</span></label>
+              <div class="input-icon-group">
+                <span class="input-icon" aria-hidden="true" data-icon="graduation-cap"></span>
+                <input type="text" id="collegeName" name="collegeName" placeholder="Enter your college name" required aria-describedby="collegeNameError" aria-invalid="false" />
+              </div>
+              <div class="error-message" id="collegeNameError" role="alert">Please enter your college name.</div>
             </div>
-          </div>
-          <div class="form-row">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <div class="input-icon-group">
+                  <span class="input-icon" aria-hidden="true" data-icon="mail"></span>
+                  <input type="email" id="email" name="email" placeholder="you@example.com" required aria-describedby="emailError" aria-invalid="false" />
+                </div>
+                <div class="error-message" id="emailError" role="alert">Please enter a valid email address.</div>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <div class="input-icon-group">
+                  <span class="input-icon" aria-hidden="true" data-icon="phone"></span>
+                  <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required aria-describedby="phoneError" aria-invalid="false" />
+                </div>
+                <div class="error-message" id="phoneError" role="alert">Please enter a valid 10-digit phone number.</div>
+              </div>
+            </div>
             <div class="form-group">
-              <label for="gender">Gender</label>
-              <select id="gender" name="gender">
+              <label for="gender">Gender <span class="required">*</span></label>
+              <select id="gender" name="gender" required aria-describedby="genderError" aria-invalid="false">
                 <option value="">Select gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
               </select>
+              <div class="error-message" id="genderError" role="alert">Please select your gender.</div>
             </div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend class="form-section-title"><span class="form-section-number">2</span>Event &amp; Team</legend>
+
             <div class="form-group">
               <label for="eventSelect">Select Event <span class="required">*</span></label>
               <select id="eventSelect" name="eventSelect" required aria-describedby="eventSelectError" aria-invalid="false">
@@ -77,25 +96,38 @@ register.html
               </select>
               <div class="error-message" id="eventSelectError" role="alert">Please select an event.</div>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="participantType">Participant Type</label>
-              <select id="participantType" name="participantType">
-                <option value="">Select type</option>
-                <option value="individual">Individual</option>
-                <option value="team">Team</option>
-              </select>
+            <div class="event-preview-card" id="eventPreview" hidden></div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="participantType">Participant Type <span class="required">*</span></label>
+                <select id="participantType" name="participantType" required aria-describedby="participantTypeError" aria-invalid="false">
+                  <option value="">Select type</option>
+                  <option value="individual">Individual</option>
+                  <option value="team">Team</option>
+                </select>
+                <div class="error-message" id="participantTypeError" role="alert">Please select a participant type.</div>
+              </div>
+              <div class="form-group form-conditional" id="teamNameGroup">
+                <label for="teamName">Team Name <span class="required">*</span></label>
+                <div class="input-icon-group">
+                  <span class="input-icon" aria-hidden="true" data-icon="users"></span>
+                  <input type="text" id="teamName" name="teamName" placeholder="Enter team name" aria-describedby="teamNameError" aria-invalid="false" />
+                </div>
+                <div class="error-message" id="teamNameError" role="alert">Please enter your team name.</div>
+              </div>
             </div>
-            <div class="form-group form-conditional" id="teamNameGroup">
-              <label for="teamName">Team Name</label>
-              <input type="text" id="teamName" name="teamName" placeholder="Enter team name" />
+            <div class="form-group form-conditional" id="participantCountGroup">
+              <label for="participantCount">Number of Participants (including you) <span class="required">*</span></label>
+              <input type="number" id="participantCount" name="participantCount" min="1" max="20" placeholder="Total team size" aria-describedby="participantCountError" aria-invalid="false" />
+              <div class="error-message" id="participantCountError" role="alert">Please enter a team size between 1 and 20.</div>
             </div>
-          </div>
-          <div class="form-group form-conditional" id="participantCountGroup">
-            <label for="participantCount">Number of Participants</label>
-            <input type="number" id="participantCount" name="participantCount" min="1" max="20" placeholder="Number of team members" />
-          </div>
+            <div class="form-conditional" id="teamMembersGroup">
+              <label class="form-group-label">Other Team Members</label>
+              <div id="teamMembersFields"></div>
+            </div>
+          </fieldset>
+
+          <p class="form-banner-error" id="registrationError" role="alert" hidden></p>
           <button type="submit" class="btn btn-primary form-submit">
             <span class="btn-label">Submit Registration</span>
           </button>

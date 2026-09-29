@@ -10,7 +10,6 @@ import { getClient } from './base.js';
 
 // Postgres error codes we want to turn into friendly messages.
 const UNIQUE_VIOLATION = '23505';
-const FOREIGN_KEY_VIOLATION = '23503';
 const CHECK_VIOLATION = '23514';
 
 export async function createRegistration(payload) {
@@ -24,14 +23,12 @@ export async function createRegistration(payload) {
     participant_type: payload.participantType || null,
     team_name: payload.teamName || null,
     participant_count: payload.participantCount ? Number(payload.participantCount) : null,
+    team_members: payload.teamMembers?.length ? payload.teamMembers : null,
   });
 
   if (error) {
     if (error.code === UNIQUE_VIOLATION) {
       throw new Error('You have already registered for this event with this email address.');
-    }
-    if (error.code === FOREIGN_KEY_VIOLATION) {
-      throw new Error('The selected event is no longer available. Please choose another event.');
     }
     if (error.code === CHECK_VIOLATION) {
       throw new Error('Some of the details you entered are invalid. Please double-check the form.');

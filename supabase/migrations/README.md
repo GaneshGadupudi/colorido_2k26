@@ -1,10 +1,15 @@
 # Migrations
 
-Run these in order — each one depends on the previous:
+Supabase is used for exactly one thing here: collecting registrations
+submitted through the form on `register.html`. Everything else
+(events, schedule, announcements, results, sponsors, gallery) is
+static data in `data/*.js` and does not touch the database.
 
-1. `20260929000001_create_content_tables.sql` — schema for `events`, `schedule_days`, `schedule_items`, `announcements`, `results`, `sponsors`, `gallery_images`. Enables RLS with public (anon + authenticated) **read-only** policies on all of them.
-2. `20260929000002_create_registrations_table.sql` — schema for `registrations`, the table the public registration form writes to. Enables RLS with a public **insert-only** policy — nobody can read/update/delete it from the browser.
-3. `20260929000003_seed_content_data.sql` — populates the content tables with the festival's actual events/schedule/announcements/results/sponsors/gallery data (the same data that used to live in `data/*.js`). Safe to re-run; it clears each table before inserting.
+Run these in order:
+
+1. `20260929000002_create_registrations_table.sql` — schema for `registrations`, the table the public registration form writes to. Enables RLS with a public **insert-only** policy — nobody can read/update/delete it from the browser.
+2. `20260929000003_drop_content_tables.sql` — cleanup only needed if you previously ran an older version of this project's migrations that created `events`, `schedule_days`, `schedule_items`, `announcements`, `results`, `sponsors` and `gallery_images` tables. Drops them, since that content is static again. Safe to run even if those tables don't exist.
+3. `20260929000004_add_team_members_to_registrations.sql` — only needed if your `registrations` table was created before `team_members` was added to migration 1 above. Adds the column. Safe to run even if it already exists.
 
 ## How to run them
 
@@ -16,8 +21,6 @@ Or, if you use the [Supabase CLI](https://supabase.com/docs/guides/cli) and have
 supabase db push
 ```
 
-## Managing content afterwards
+## Viewing registrations
 
-There is no admin UI in this app. Add/edit/remove events, schedule items, announcements, results, sponsors and gallery images directly from the Supabase dashboard's **Table Editor** (or SQL Editor) — that connection bypasses RLS, so it can write even though the public site can only read.
-
-Registrations submitted through the site land in the `registrations` table; view/export them the same way (Table Editor), since the public site cannot read them back (by design — see the RLS policy comments in migration 2).
+There is no admin UI in this app. View/export submitted registrations from the Supabase dashboard's **Table Editor** (or SQL Editor) on the `registrations` table — the public site can't read them back (by design — see the RLS policy comment in the migration).

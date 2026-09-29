@@ -3,12 +3,10 @@
 // Handles event card rendering, filtering, search, and details
 // ============================================================
 
-import { fetchEvents } from './services/eventsService.js';
+import { events } from '../data/events.js';
 import { icons } from './icons.js';
 import { createFocusTrap } from './focus-trap.js';
-import { showLoading, showError, hideState } from './data-state.js';
 
-let events = [];
 let currentCategory = 'all';
 let currentSearch = '';
 let modalFocusTrap = null;
@@ -31,10 +29,6 @@ export function renderEvents() {
 
   if (filtered.length === 0) {
     grid.innerHTML = '';
-    noEvents.textContent =
-      events.length === 0
-        ? 'No events have been published yet. Check back soon.'
-        : 'No events found. Try a different search.';
     noEvents.style.display = 'block';
     return;
   }
@@ -147,24 +141,8 @@ export function closeEventModal() {
 }
 
 // ── INIT EVENT FILTERS ────────────────────────────────────
-export async function initEvents() {
-  const grid = document.getElementById('eventsGrid');
-  const state = document.getElementById('eventsState');
-  const noEvents = document.getElementById('noEvents');
-  if (!grid) return;
-
-  noEvents.style.display = 'none';
-  grid.innerHTML = '';
-  showLoading(state, 'Loading events…');
-
-  try {
-    events = await fetchEvents();
-    hideState(state);
-    renderEvents();
-  } catch (err) {
-    showError(state, err.message, initEvents);
-    return;
-  }
+export function initEvents() {
+  renderEvents();
 
   // Category tabs
   document.querySelectorAll('.events-tab[data-category]').forEach((tab) => {
