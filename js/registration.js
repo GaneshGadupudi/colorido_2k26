@@ -1,10 +1,11 @@
+
 // ============================================================
 // COLORIDO 2K26 — REGISTRATION MODULE
 // Form validation, conditional fields, and success state
 // ============================================================
 
 import { events } from '../data/events.js';
-
+import { event_svg } from '../data/event-svg.js';
 export function initRegistration() {
   const form = document.getElementById('registrationForm');
   if (!form) return;
@@ -48,21 +49,36 @@ export function initRegistration() {
       if (firstError) firstError.focus();
       return;
     }
-
+    const form = e.target;
+    const eventName = new FormData(form).get("eventSelect");
+    console.log(eventName);
     submitBtn.disabled = true;
     submitBtn.classList.add('loading');
-
-    // Brief, deliberate delay so the loading state is perceivable feedback
-    // rather than an instantaneous, unconfirmed click.
     setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.classList.remove('loading');
-      form.style.display = 'none';
-      const success = document.getElementById('formSuccess');
-      success.classList.add('show');
-      success.querySelector('h3').setAttribute('tabindex', '-1');
-      success.querySelector('h3').focus();
-    }, 600);
+    submitBtn.disabled = false;
+    submitBtn.classList.remove('loading');
+
+    form.style.display = 'none';
+    console.log(eventName);
+    const eventSvg = document.querySelector('.event-svg');
+    const svg = event_svg[eventName];
+   const success = document.getElementById('formSuccess');
+    success.classList.add('show');
+    // Show SVG
+    eventSvg.innerHTML = svg;
+    // Keep SVG visible for 1 second
+    setTimeout(() => {
+        eventSvg.innerHTML = `
+        <div class="success-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>`;
+        const heading = success.querySelector('h3');
+        heading.setAttribute('tabindex', '-1');
+        heading.focus();
+
+    }, 2000);
+
+}, 300);
   });
 
   // Register another

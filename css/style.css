@@ -1,3 +1,4 @@
+
 /* ============================================================
    COLORIDO 2K26 — DESIGN SYSTEM
    Monochrome Minimal & Crimson Pop (Clean & Sharp)
@@ -1162,7 +1163,6 @@ body.menu-open { overflow: hidden; }
 .event-modal {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
   max-width: 700px;
   width: 100%;
   max-height: 85vh;
@@ -1667,7 +1667,7 @@ button.slot-card:hover .slot-card-cta { opacity: 1; }
   border-radius: var(--radius-xl);
 }
 .form-success.show { display: block; animation: fadeInUp 0.5s ease; }
-.form-success .success-icon {
+.form-success .success-icon .event-svg{
   width: 64px;
   height: 64px;
   border-radius: 50%;

@@ -2,12 +2,31 @@
 // COLORIDO 2K26 — SPONSORS MODULE
 // ============================================================
 
-import { sponsors } from '../data/announcements.js';
+import { fetchSponsors } from './services/sponsorsService.js';
+import { showLoading, showError, showEmpty, hideState } from './data-state.js';
 
-export function initSponsors() {
+export async function initSponsors() {
   const container = document.getElementById('sponsorsContainer');
+  const state = document.getElementById('sponsorsState');
   if (!container) return;
 
+  container.innerHTML = '';
+  showLoading(state, 'Loading sponsors…');
+
+  let sponsors;
+  try {
+    sponsors = await fetchSponsors();
+  } catch (err) {
+    showError(state, err.message, () => initSponsors());
+    return;
+  }
+
+  if (sponsors.length === 0) {
+    showEmpty(state, 'Sponsors will be announced soon.');
+    return;
+  }
+
+  hideState(state);
   const tiers = [...new Set(sponsors.map((s) => s.tier))];
 
   container.innerHTML = tiers

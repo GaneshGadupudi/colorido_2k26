@@ -2,16 +2,27 @@
 // COLORIDO 2K26 — RESULTS MODULE
 // ============================================================
 
-import { results } from '../data/announcements.js';
+import { fetchResults } from './services/resultsService.js';
+import { showLoading, showError, showEmpty, hideState } from './data-state.js';
 
-export function initResults() {
+export async function initResults() {
   const grid = document.getElementById('resultsGrid');
+  const state = document.getElementById('resultsState');
   if (!grid) return;
 
   let currentTab = 'cultural';
+  let results = { cultural: [], sports: [] };
 
   function renderResults() {
     const data = results[currentTab];
+
+    if (data.length === 0) {
+      grid.innerHTML = '';
+      showEmpty(state, 'Results for this category have not been published yet.');
+      return;
+    }
+
+    hideState(state);
     grid.innerHTML = data
       .map(
         (r) => `
@@ -35,6 +46,16 @@ export function initResults() {
     `,
       )
       .join('');
+  }
+
+  grid.innerHTML = '';
+  showLoading(state, 'Loading results…');
+
+  try {
+    results = await fetchResults();
+  } catch (err) {
+    showError(state, err.message, () => initResults());
+    return;
   }
 
   document.querySelectorAll('[data-results]').forEach((tab) => {
