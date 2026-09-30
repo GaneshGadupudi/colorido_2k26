@@ -317,11 +317,6 @@ body.menu-open .navbar { background: var(--color-bg-card); border-bottom-color: 
 .nav-cta { display: flex; align-items: center; gap: var(--space-1); }
 .nav-register { padding: 0.65rem 1.5rem; font-size: 0.8rem; box-shadow: none; }
 .nav-register:hover { box-shadow: var(--shadow-crimson); }
-.nav-register.is-current {
-  background: var(--color-crimson-50);
-  color: var(--color-crimson-700);
-  box-shadow: inset 0 0 0 1.5px var(--color-crimson-300);
-}
 
 .nav-toggle {
   display: none;
@@ -854,11 +849,18 @@ body.menu-open { overflow: hidden; }
   margin-right: 0.5rem;
   animation: pulse 1.5s ease-in-out infinite;
 }
+.ticker
+{
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
 .ticker-track {
   display: flex;
   gap: var(--space-5);
+  width: max-content;
   white-space: nowrap;
-  animation: tickerScroll 40s linear infinite;
+  animation: tickerScroll 20s linear infinite alternate;
   padding-left: 120px;
 }
 .ticker-track span {
@@ -2153,6 +2155,16 @@ button.slot-card:hover .slot-card-cta { opacity: 1; }
   align-items: center;
   gap: 0.5rem;
   color: var(--color-crimson);
+}
+.map-container {
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+}
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 .contact-map .map-pin span { font-size: 0.85rem; color: var(--color-text-secondary); font-weight: 500; }
 .contact-map h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
