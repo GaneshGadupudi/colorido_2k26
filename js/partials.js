@@ -177,7 +177,16 @@ export function renderFooter() {
         </div>
         <div class="footer-bottom">
           <p>&copy; 2026 COLORIDO 2K26 · R.V.R. &amp; J.C. College of Engineering, Guntur</p>
-          <a href="contact.html">Contact the organising team →</a>
+          <p class="footer-developers">
+  Design &amp; Developed by
+  <a href="https://www.linkedin.com/in/gadupudiganesh/" target="_blank" rel="noopener noreferrer">
+    Ganesh Gadupudi
+  </a>
+  <span>•</span>
+  <a href="https://www.linkedin.com/in/nikhil-kumar-adusumilly-6182293b0/" target="_blank" rel="noopener noreferrer">
+    Adusumilly Nikhil Kumar
+  </a>
+</p>
         </div>
       </div>
     </footer>

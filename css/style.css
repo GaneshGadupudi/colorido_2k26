@@ -1656,6 +1656,13 @@ button.slot-card:hover .slot-card-cta { opacity: 1; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%2371717A' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
+  color-scheme: light;
+}
+/* Native dropdown list: set colours explicitly so options never render
+   light-on-light (invisible) when the browser/OS applies a dark theme. */
+.form-group select option {
+  color: #18181B;
+  background-color: #FFFFFF;
 }
 .form-group .error-message {
   display: none;
@@ -1696,6 +1703,7 @@ button.slot-card:hover .slot-card-cta { opacity: 1; }
   border-radius: var(--radius-lg);
   animation: fadeInUp 0.25s ease;
 }
+.event-preview-card[hidden] { display: none; }
 .event-preview-icon {
   display: flex;
   align-items: center;
@@ -2300,3 +2308,63 @@ button.slot-card:hover .slot-card-cta { opacity: 1; }
 
 /* ── SELECTION ───────────────────────────────────────────── */
 ::selection { background: var(--color-crimson); color: #fff; }
+
+/* ========================================
+   Developed By
+======================================== */
+
+.developed-by {
+  text-align: center;
+  padding: 35px 20px 45px;
+  margin-top: 10px;
+}
+
+.developed-label {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted, #8b8b8b);
+  margin-bottom: 12px;
+}
+
+.organising-team {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+}
+
+.organising-team a {
+  color: var(--color-crimson);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.team-divider {
+  color: var(--text-muted, #777);
+  font-size: 0.8rem;
+}
+.footer-developers {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted, #8b8b8b);
+  margin: 0;
+}
+
+.footer-developers a {
+  color: var(--color-crimson);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-developers span {
+  margin: 0 6px;
+  color: var(--text-muted, #777);
+}
